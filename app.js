@@ -37,7 +37,7 @@ const displayModal = async (id) => {
     const modalDetails = document.getElementById("modal-details");
     const details = document.createElement("div");
     details.innerHTML = `
-    <p>Product ID: ${data.meals[0].idMeal}</p>
+    <p id = "p-id">Product ID: ${data.meals[0].idMeal}</p>
     <p>Tag: ${data.meals[0].strTags}</p>
     `;
     modalDetails.appendChild(details);

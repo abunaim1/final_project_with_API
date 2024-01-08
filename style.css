@@ -17,7 +17,7 @@
 }
 .box{
     width: 300px;
-    height: 400px;
+    height: 600px;
     border: 1px solid gray;
     text-align: center;
     margin: 5px;
@@ -33,6 +33,3 @@
     width: 300px;
     height: 200px;
 }
-
-/* 
- */
