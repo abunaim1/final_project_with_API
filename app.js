@@ -1,6 +1,7 @@
-const loadData = () => {
+const loadData = (global) => {
   const searchText = document.getElementById("serach-tex").value;
-  fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${searchText}`)
+
+  fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${searchText ? searchText : global}`)
     .then((res) => res.json())
     .then((data) => displayData(data.meals));
 };
@@ -29,13 +30,22 @@ const displayData = (data) => {
   });
 };
 
-const displayModal = (id) => {
-    try{
-        const response = async 
-    }
-    catch{
-
-    }
-  
+const displayModal = async (id) => {
+  try {
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
+    const data = await response.json();
+    const modalDetails = document.getElementById("modal-details");
+    const details = document.createElement("div");
+    details.innerHTML = `
+    <p>Product ID: ${data.meals[0].idMeal}</p>
+    <p>Tag: ${data.meals[0].strTags}</p>
+    `;
+    modalDetails.appendChild(details);
+  } catch {
+    (err) => {
+      console.log(err);
+    };
+  }
 };
-fetch('www.themealdb.com/api/json/v1/1/lookup.php?i=${id}')
+
+loadData("a");
